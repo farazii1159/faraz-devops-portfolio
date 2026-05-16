@@ -11,7 +11,7 @@ import { ReactTyped } from "react-typed";
 import Resume from "./Resume"; // <--- Ye aapka naya PDF logic handle karega
 import HireMeSection from "./HireMeSection";
 import GitHubStats from "./GitHubStats";
-import Pipeline from "./Pipeline";
+import Pipeline from "./Pipeline.jsx";
 
 // --- Icons ---
 import { FaDocker, FaLinux, FaAws } from "react-icons/fa";
