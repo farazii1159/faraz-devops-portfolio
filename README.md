@@ -84,7 +84,7 @@ faraz-portfolio-cicd/
 └── vite.config.js          # Unified bundler configuration integrating React and Tailwind
 compilers
 ```
-#####################################################################################################
+###############################################################################################################
 
 💻 Step-by-Step Local Deployment Runbook
 Follow this precise execution runbook to spin up, configure, analyze, and build this architecture within your local workspace environment:
@@ -98,7 +98,7 @@ Step 1: Provision the Local Workspace Directory
 Clone the mainline repository from GitHub and move directly into the initialized project root path:
 
 ```
-git clone https://github.com/farazii1159/faraz-portfolio-cicd.git
+git clone [https://github.com/farazii1159/faraz-portfolio-cicd.git](https://github.com/farazii1159/faraz-portfolio-cicd.git)
 
 cd faraz-portfolio-cicd
 ```
