@@ -19,7 +19,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 
 
--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 
 # 🚀 Production-Grade DevOps Portfolio Architecture
 
@@ -83,8 +83,8 @@ faraz-portfolio-cicd/
 ├── package.json            # Node project dependency manifests & lifecycle target scripts
 └── vite.config.js          # Unified bundler configuration integrating React and Tailwind
 compilers
-
-#####################################################################################################################################################
+```
+###############################################################################################################
 
 💻 Step-by-Step Local Deployment Runbook
 Follow this precise execution runbook to spin up, configure, analyze, and build this architecture within your local workspace environment:
@@ -97,15 +97,16 @@ Prerequisites
 Step 1: Provision the Local Workspace Directory
 Clone the mainline repository from GitHub and move directly into the initialized project root path:
 
-git clone [https://github.com/farazii1159/faraz-portfolio-cicd.git](https://github.com/farazii1159/faraz-portfolio-cicd.git)
+```
+git clone https://github.com/farazii1159/faraz-portfolio-cicd.git
 
 cd faraz-portfolio-cicd
-
+```
 
 Step 2: Initialize Git Environment
 (If setting up a fresh repository from scratch instead of cloning)
 Initialize the hidden .git/ metadata tracker, stage workspace modifications, commit the baseline delta, link your upstream system, and push to production:
-
+```
 git init
 git add .
 git commit -m "feat: infrastructure baseline setup"
@@ -113,76 +114,79 @@ git branch -M main
 git remote add origin [https://github.com/farazii1159/faraz-portfolio-cicd.git](https://github.com/farazii1159/faraz-portfolio-cicd.git)
 git push -u origin main
 
-
+```
 Step 3: Fetch and Install Node modules (Dependencies)
 Execute the node package manager routine to pull all third-party layers mapped inside the project manifests into the local node_modules/ directory:
-
+```
 npm install
 
-
+```
 Step 4: Boot Up the Local Infrastructure (Dev Server)
 Launch the reactive development node. This mounts an ephemeral web cluster running native Hot Module Replacement (HMR) systems for rapid live testing:
-
+```
 npm run dev
-
+```
 * Output Access: Point your web browser engine to the generated local endpoint: http://localhost:5173
 
 
 Step 5: Run Static Code Analysis & Linting
 Scan the codebase against configuration strictures to flag semantic runtime issues, syntax anomalies, and style compliance mismatches defined within eslint.config.js:
-
+```
 
 npm run lint
 
-
+```
 Step 6: Compile Production-Ready Assets
 Execute the native build sequence to run structural tree-shaking optimizations, combine module graphs, minimize assets, and compress definitions into a clean distribution layout:
-
+```
 
 npm run build
 
-
+```
 * The built output will materialize inside an isolated, production-grade dist/ workspace folder.
 
 
 Step 7: Local Production Simulation (Preview Mode)
 Instantiate a local preview server wrapping the newly compiled distribution build to confirm edge-delivery simulation before firing pipeline webhooks:
-
+```
 
 npm run preview
 
-
+```
 🌐 GitOps Pipeline & Continuous Deployment Strategy
 
 This architecture completely abandons manual provisioning or arbitrary zip file transfers in favor of an automated, webhook-driven Continuous Deployment (CD) engine integrated with global cloud edge servers via Vercel.
-
+```
 The Automated Build-to-Deploy Pipeline Lifecycle:
 
 
  [ Developer Workspace ] --( Git Push )--> [ GitHub Repository ] --( Webhook Trigger )--> [ Vercel Cloud Build Agent ] --> [ Global Edge Networks ]
 
-
+```
 1. Local Integrity Loop: Code modifications are iteratively tested inside the local dev cluster. Running npm run lint guarantees strict quality and system syntax consistency before any code pushes.
 
 2. Mainline Git Upstream Push: Verified incremental adjustments are pushed directly to the remote GitHub version tracking branch:
+```
 
 git add .
 git commit -m "refactor: optimize core component maps and responsive viewports"
 git push origin main
 
+```
 3. Automated Webhook Intercept: The instant a commit reaches the tracking engine, GitHub fires a secure webhook event to Vercel's orchestration infrastructure.
 
 4. Cloud Agent Build Execution: Vercel automatically provisions a containerized cloud runtime agent, pulls the updated mainline commit, targets the node environment dependencies, and executes the production compiler script:
+```
 
 npm run build
 
-
+```
 5. Global Edge Routing Propagation: Upon build completion, Vercel maps the static production output files (dist/) directly across its highly available global CDN edge network, instantly serving live performance updates globally with zero human manual overhead.
 
 🤝 Professional Inquiries & Collaboration
-
+```
 If you are looking for an engineer equipped to manage codebase velocity while maintaining stable, highly-automated deployment pipelines, let's connect:
-
+```
 * Live Portfolio Showcase: https://www.google.com/url?sa=E&source=gmail&q=https://faraz-devops-portfolio-rknq.vercel.app
 
 * LinkedIn Professional Network: https://www.linkedin.com/in/faraz-shabbir-5a9227344/
