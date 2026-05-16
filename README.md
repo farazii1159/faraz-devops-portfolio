@@ -84,7 +84,7 @@ faraz-portfolio-cicd/
 └── vite.config.js          # Unified bundler configuration integrating React and Tailwind
 compilers
 
-#####################################################################################################################################################
+###############################################################################################################
 
 💻 Step-by-Step Local Deployment Runbook
 Follow this precise execution runbook to spin up, configure, analyze, and build this architecture within your local workspace environment:
@@ -105,14 +105,14 @@ cd faraz-portfolio-cicd
 Step 2: Initialize Git Environment
 (If setting up a fresh repository from scratch instead of cloning)
 Initialize the hidden .git/ metadata tracker, stage workspace modifications, commit the baseline delta, link your upstream system, and push to production:
-
+```
 git init
 git add .
 git commit -m "feat: infrastructure baseline setup"
 git branch -M main
 git remote add origin [https://github.com/farazii1159/faraz-portfolio-cicd.git](https://github.com/farazii1159/faraz-portfolio-cicd.git)
 git push -u origin main
-
+```
 
 Step 3: Fetch and Install Node modules (Dependencies)
 Execute the node package manager routine to pull all third-party layers mapped inside the project manifests into the local node_modules/ directory:
