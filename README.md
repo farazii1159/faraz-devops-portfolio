@@ -184,8 +184,6 @@ npm run build
 5. Global Edge Routing Propagation: Upon build completion, Vercel maps the static production output files (dist/) directly across its highly available global CDN edge network, instantly serving live performance updates globally with zero human manual overhead.
 
 🤝 Professional Inquiries & Collaboration
-```
-```
 If you are looking for an engineer equipped to manage codebase velocity while maintaining stable, highly-automated deployment pipelines, let's connect:
 ```
 * Live Portfolio Showcase: https://www.google.com/url?sa=E&source=gmail&q=https://faraz-devops-portfolio-rknq.vercel.app
