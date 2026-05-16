@@ -85,7 +85,7 @@ export default function FarazDevOpsPortfolio() {
                  className="bg-cyan-500 hover:bg-cyan-400 transition px-6 py-3 rounded-2xl text-black font-bold shadow-lg shadow-cyan-500/20">
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/faraz-shabbir" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.linkedin.com/in/faraz-shabbir-5a9227344/" target="_blank" rel="noopener noreferrer"
                  className="border border-gray-700 hover:border-cyan-400 transition px-6 py-3 rounded-2xl">
                 LinkedIn
               </a>
