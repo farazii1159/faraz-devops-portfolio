@@ -1,211 +1,177 @@
 /**
- * FarazDevOpsPortfolio Component
- * * Professional Portfolio for a DevOps Engineer.
- * Integrated with jsPDF-based Resume Generation.
+ * FarazDevOpsPortfolio - Optimized Version
  */
 
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { ReactTyped } from "react-typed";
 
-// --- Custom Components ---
-import Resume from "./Resume"; // <--- Ye aapka naya PDF logic handle karega
-import HireMeSection from "./HireMeSection";
-import GitHubStats from "./GitHubStats";
-import Pipeline from "./Pipeline.jsx";
+// --- Lazy Loaded Components (IMPORTANT OPTIMIZATION) ---
+const Resume = lazy(() => import("./Resume"));
+const Pipeline = lazy(() => import("./Pipeline.jsx"));
+const HireMeSection = lazy(() => import("./HireMeSection"));
+const GitHubStats = lazy(() => import("./GitHubStats"));
 
 // --- Icons ---
 import { FaDocker, FaLinux, FaAws } from "react-icons/fa";
 import { SiKubernetes, SiJenkins, SiTerraform } from "react-icons/si";
 
+// --- DATA ---
 const SKILLS_DATA = [
-  { name: 'Linux Administration', link: 'https://roadmap.sh/linux' },
-  { name: 'Docker & Containers', link: 'https://roadmap.sh/docker' },
-  { name: 'CI/CD Pipelines', link: 'https://roadmap.sh/devops' },
-  { name: 'GitHub Actions', link: 'https://docs.github.com/actions' },
-  { name: 'AWS Cloud', link: 'https://aws.amazon.com/getting-started/' },
-  { name: 'Terraform', link: 'https://developer.hashicorp.com/terraform/tutorials' },
-  { name: 'Shell Scripting', link: 'https://linuxjourney.com/' },
-  { name: 'Kubernetes Basics', link: 'https://kubernetes.io/docs/tutorials/' },
-  { name: 'Monitoring & Logging', link: 'https://grafana.com/tutorials/' },
-  { name: 'Networking Fundamentals', link: 'https://roadmap.sh/computer-science' }
+  { name: "Linux Administration", link: "https://roadmap.sh/linux" },
+  { name: "Docker & Containers", link: "https://roadmap.sh/docker" },
+  { name: "CI/CD Pipelines", link: "https://roadmap.sh/devops" },
+  { name: "GitHub Actions", link: "https://docs.github.com/actions" },
+  { name: "AWS Cloud", link: "https://aws.amazon.com/getting-started/" },
+  { name: "Terraform", link: "https://developer.hashicorp.com/terraform/tutorials" },
+  { name: "Shell Scripting", link: "https://linuxjourney.com/" },
+  { name: "Kubernetes Basics", link: "https://kubernetes.io/docs/tutorials/" },
+  { name: "Monitoring & Logging", link: "https://grafana.com/tutorials/" },
+  { name: "Networking Fundamentals", link: "https://roadmap.sh/computer-science" }
 ];
 
 const PROJECTS_DATA = [
   {
-    title: 'Enterprise CI/CD Pipeline',
-    desc: 'Built CI/CD workflow using GitHub Actions, Docker, AWS with rollback strategy.',
-    tech: 'GitHub Actions • Docker • AWS • Linux'
+    title: "Enterprise CI/CD Pipeline",
+    desc: "Built CI/CD workflow using GitHub Actions, Docker, AWS with rollback strategy.",
+    tech: "GitHub Actions • Docker • AWS • Linux"
   },
   {
-    title: 'Dockerized Infrastructure',
-    desc: 'Multi-service containerized apps with Nginx reverse proxy automation.',
-    tech: 'Docker • Nginx • Bash'
+    title: "Dockerized Infrastructure",
+    desc: "Multi-service containerized apps with Nginx reverse proxy automation.",
+    tech: "Docker • Nginx • Bash"
   }
 ];
 
+// --- LOADER COMPONENT ---
+const Loader = () => (
+  <div className="text-cyan-400 text-center py-10">
+    Loading...
+  </div>
+);
+
 export default function FarazDevOpsPortfolio() {
-  
-  // NOTE: Humne purana 'handleDownloadResume' yahan se hata diya hai
-  // kyunki ab Resume component khud apna download handle karega.
-
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-cyan-500/30">
-      
-      {/* HERO SECTION */}
-      <section className="relative overflow-hidden border-b border-gray-800">
-        <div className="absolute inset-0 bg-[radial-gradient(circle,_#0ff2,_transparent_60%)] opacity-20 animate-pulse"></div>
+    <div className="min-h-screen bg-black text-white font-sans">
 
-        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
-          
+      {/* HERO */}
+      <section className="border-b border-gray-800 py-24 px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+
           <div>
-            <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4 font-semibold">
+            <p className="text-cyan-400 tracking-[0.3em] mb-4">
               DevOps Engineer Portfolio
             </p>
 
-            <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-5xl font-bold mb-6">
               Hi, I'm <span className="text-cyan-400">Faraz Shabbir</span>
             </h1>
 
-            <div className="text-cyan-400 text-2xl font-bold mb-6">
+            <div className="text-cyan-400 text-xl mb-6">
               <ReactTyped
-                strings={["DevOps Engineer", "Linux Enthusiast", "Cloud Learner", "CI/CD Builder"]}
+                strings={[
+                  "DevOps Engineer",
+                  "Linux Enthusiast",
+                  "Cloud Learner",
+                  "CI/CD Builder"
+                ]}
                 typeSpeed={70}
                 backSpeed={40}
                 loop
               />
             </div>
 
-            <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-2xl">
-              Passionate DevOps learner focused on Infrastructure Automation and building scalable deployment pipelines.
+            <p className="text-gray-400 mb-8">
+              Passionate DevOps learner focused on automation and cloud infrastructure.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 items-center">
-              <a href="https://github.com/farazii1159" target="_blank" rel="noopener noreferrer" 
-                 className="bg-cyan-500 hover:bg-cyan-400 transition px-6 py-3 rounded-2xl text-black font-bold shadow-lg shadow-cyan-500/20">
+            {/* CTA + Resume */}
+            <div className="flex gap-4 flex-wrap items-center">
+
+              <a
+                href="https://github.com/farazii1159"
+                target="_blank"
+                className="bg-cyan-500 text-black px-5 py-3 rounded-xl font-bold"
+              >
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/faraz-shabbir-5a9227344/" target="_blank" rel="noopener noreferrer"
-                 className="border border-gray-700 hover:border-cyan-400 transition px-6 py-3 rounded-2xl">
+
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                className="border border-gray-700 px-5 py-3 rounded-xl"
+              >
                 LinkedIn
               </a>
 
-              {/* INTEGRATED RESUME COMPONENT */}
-              {/* Ye component ab button aur download logic dono sambhale ga */}
-              <Resume /> 
+              <Suspense fallback={<Loader />}>
+                <Resume />
+              </Suspense>
+
             </div>
           </div>
 
-          {/* Terminal Visual */}
-          <div className="relative group">
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-3xl p-8 shadow-2xl transition group-hover:border-cyan-500/50">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-              <pre className="text-green-400 text-sm overflow-x-auto leading-relaxed">
-{`┌──(faraz㉿devops)-[~/portfolio]
-└─$ whoami
-Faraz Shabbir
-
-┌──(faraz㉿devops)-[~/about]
-└─$ cat intro.txt
-Computer Science Student & Aspiring DevOps Engineer
-Passionate about Linux, Cloud, Automation & CI/CD
-
-┌──(faraz㉿devops)-[~/skills]
-└─$ ls
-Linux
-Docker
-AWS
-CI/CD, Terraform, Jenkins, Kubernetes, Git & GitHub, Shell Scripting
-
-┌──(faraz㉿devops)-[~/projects]
-└─$ find .
-✔ Dockerized Applications
-✔ CI/CD Pipelines
-✔ AWS Cloud Deployments 
-✔ Infrastructure Automation
-
-┌──(faraz㉿devops)-[~/goals]
-└─$ echo $CAREER
-Building scalable cloud infrastructure
-and becoming a professional DevOps Engineer 🚀
-
-┌──(faraz㉿devops)-[~/status]
-└─$ cat availability.txt
-Open to Internship Opportunities,Learning & Collaboration
-
-┌──(faraz㉿devops)-[~/contact]
-└─$ ping github.com
-Connection established...`}
-              </pre>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* QUICK ACCESS BADGES */}
-      <div className="flex flex-wrap gap-3 justify-center -translate-y-1/2">
-        {['Docker', 'CI/CD', 'AWS', 'Linux', 'Terraform'].map(tag => (
-          <span key={tag} className="px-6 py-2 bg-gray-900 border border-gray-800 rounded-full text-cyan-400 text-sm font-medium">
-            {tag}
-          </span>
+      {/* TECH STACK */}
+      <section className="py-20 px-6 text-center">
+        <h2 className="text-3xl mb-10">Technical Stack</h2>
+
+        <div className="flex justify-center gap-8 text-5xl text-gray-500">
+          <FaLinux />
+          <FaDocker />
+          <FaAws />
+          <SiKubernetes />
+          <SiJenkins />
+          <SiTerraform />
+        </div>
+      </section>
+
+      {/* SKILLS */}
+      <section className="px-6 py-10 grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+        {SKILLS_DATA.map((skill, i) => (
+          <a
+            key={i}
+            href={skill.link}
+            target="_blank"
+            className="bg-gray-900 p-4 rounded-xl text-center hover:border-cyan-500 border border-gray-800"
+          >
+            {skill.name}
+          </a>
         ))}
-      </div>
+      </section>
 
-      {/* TECHNICAL STACK */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Technical Stack</h2>
-          <div className="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
-        </div>
-        
-        <div className="flex flex-wrap gap-10 mb-16 justify-center text-gray-500 text-6xl">
-          <FaLinux className="hover:text-white transition cursor-help" title="Linux" />
-          <FaDocker className="hover:text-[#2496ed] transition" />
-          <FaAws className="hover:text-[#ff9900] transition" />
-          <SiKubernetes className="hover:text-[#326ce5] transition" />
-          <SiJenkins className="hover:text-[#d24939] transition" />
-          <SiTerraform className="hover:text-[#7b42bc] transition" />
-        </div>
+      {/* PROJECTS */}
+      <section className="px-6 py-20 max-w-6xl mx-auto">
+        <h2 className="text-3xl mb-10">Projects</h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-          {SKILLS_DATA.map((skill, index) => (
-            <a key={index} href={skill.link} target="_blank" rel="noopener noreferrer"
-               className="bg-gray-900/50 border border-gray-800 hover:border-cyan-500 transition-all rounded-2xl p-5 text-center group">
-              <p className="font-semibold group-hover:text-cyan-400">{skill.name}</p>
-            </a>
+        <div className="grid md:grid-cols-2 gap-6">
+          {PROJECTS_DATA.map((p, i) => (
+            <div key={i} className="bg-gray-900 p-6 rounded-xl border border-gray-800">
+              <h3 className="text-xl text-cyan-400 mb-2">{p.title}</h3>
+              <p className="text-gray-400 mb-4">{p.desc}</p>
+              <span className="text-sm text-gray-500">{p.tech}</span>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* PROJECTS SECTION */}
-      <section className="bg-gray-950/50 border-y border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <h2 className="text-4xl font-bold mb-12">Featured Projects</h2>
-          <div className="grid lg:grid-cols-2 gap-8">
-            {PROJECTS_DATA.map((project, index) => (
-              <div key={index} className="bg-gray-900 border border-gray-800 rounded-3xl p-8 hover:border-cyan-500 transition-all group">
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition">{project.title}</h3>
-                <p className="text-gray-400 leading-relaxed mb-6">{project.desc}</p>
-                <div className="border-t border-gray-800 pt-4 text-cyan-400/80 text-sm font-mono">{project.tech}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* FOOTER COMPONENTS (LAZY LOADED) */}
+      <section className="border-t border-gray-800 py-20">
+        <Suspense fallback={<Loader />}>
+          <Pipeline />
+        </Suspense>
+
+        <Suspense fallback={<Loader />}>
+          <HireMeSection />
+        </Suspense>
       </section>
 
       {/* FOOTER */}
-      <section className="pb-20">
-        <Pipeline />
-        <HireMeSection />
-      </section>
-
-      <footer className="border-t border-gray-800 py-12 text-center text-gray-500">
-        <p>© 2026 Faraz DevOps Portfolio</p>
+      <footer className="text-center py-10 text-gray-500 border-t border-gray-800">
+        © 2026 Faraz DevOps Portfolio
       </footer>
+
     </div>
   );
 }
