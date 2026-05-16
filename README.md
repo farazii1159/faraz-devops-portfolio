@@ -83,7 +83,7 @@ faraz-portfolio-cicd/
 ├── package.json            # Node project dependency manifests & lifecycle target scripts
 └── vite.config.js          # Unified bundler configuration integrating React and Tailwind
 compilers
-
+```
 ###############################################################################################################
 
 💻 Step-by-Step Local Deployment Runbook
@@ -97,6 +97,7 @@ Prerequisites
 Step 1: Provision the Local Workspace Directory
 Clone the mainline repository from GitHub and move directly into the initialized project root path:
 
+```
 git clone https://github.com/farazii1159/faraz-portfolio-cicd.git
 
 cd faraz-portfolio-cicd
