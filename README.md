@@ -97,8 +97,7 @@ Prerequisites
 Step 1: Provision the Local Workspace Directory
 Clone the mainline repository from GitHub and move directly into the initialized project root path:
 
-git clone [https://github.com/farazii1159/faraz-portfolio-cicd.git](https://github.com/farazii1159/faraz-portfolio-cicd.git)
-
+git clone https://github.com/farazii1159/faraz-portfolio-cicd.git
 cd faraz-portfolio-cicd
 
 
