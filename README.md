@@ -58,6 +58,9 @@ The workspace utilizes a highly-optimized flat component structure inside the so
 ```text
 faraz-portfolio-cicd/
 ├── .git/                   # Local Git Repository Version Control Metadata
+├── .github/                # GitHub Automation Framework
+│   └── workflows/          # CI/CD Pipeline Definitions
+│       └── deploy.yml      # GitHub Actions Vercel Production Deployment Runbook
 ├── node_modules/           # Installed Project Artifacts & Vendor Dependencies
 ├── public/                 # Static Global Web Assets
 │   ├── favicon.svg         # High-resolution tab display brand icon
@@ -81,8 +84,7 @@ faraz-portfolio-cicd/
 ├── index.html              # Main application single-page landing DOM gate
 ├── package-lock.json       # Deterministic lock-file mapping absolute dependency trees
 ├── package.json            # Node project dependency manifests & lifecycle target scripts
-└── vite.config.js          # Unified bundler configuration integrating React and Tailwind
-compilers
+└── vite.config.js          # Unified bundler configuration integrating React and Tailwind compilers
 ```
 ###############################################################################################################
 
@@ -98,30 +100,18 @@ Step 1: Provision the Local Workspace Directory
 Clone the mainline repository from GitHub and move directly into the initialized project root path:
 
 ```
-git clone https://github.com/farazii1159/faraz-portfolio-cicd.git
+git clone https://github.com/farazii1159/faraz-devops-portfolio.git
 
 cd faraz-portfolio-cicd
-```
-
-Step 2: Initialize Git Environment
-(If setting up a fresh repository from scratch instead of cloning)
-Initialize the hidden .git/ metadata tracker, stage workspace modifications, commit the baseline delta, link your upstream system, and push to production:
-```
-git init
-git add .
-git commit -m "feat: infrastructure baseline setup"
-git branch -M main
-git remote add origin [https://github.com/farazii1159/faraz-portfolio-cicd.git](https://github.com/farazii1159/faraz-portfolio-cicd.git)
-git push -u origin main
 
 ```
-Step 3: Fetch and Install Node modules (Dependencies)
+Step 2: Fetch and Install Node modules (Dependencies)
 Execute the node package manager routine to pull all third-party layers mapped inside the project manifests into the local node_modules/ directory:
 ```
 npm install
 
 ```
-Step 4: Boot Up the Local Infrastructure (Dev Server)
+Step 3: Boot Up the Local Infrastructure (Dev Server)
 Launch the reactive development node. This mounts an ephemeral web cluster running native Hot Module Replacement (HMR) systems for rapid live testing:
 ```
 npm run dev
@@ -129,14 +119,14 @@ npm run dev
 * Output Access: Point your web browser engine to the generated local endpoint: http://localhost:5173
 
 
-Step 5: Run Static Code Analysis & Linting
+Step 4: Run Static Code Analysis & Linting
 Scan the codebase against configuration strictures to flag semantic runtime issues, syntax anomalies, and style compliance mismatches defined within eslint.config.js:
 ```
 
 npm run lint
 
 ```
-Step 6: Compile Production-Ready Assets
+Step 5: Compile Production-Ready Assets
 Execute the native build sequence to run structural tree-shaking optimizations, combine module graphs, minimize assets, and compress definitions into a clean distribution layout:
 ```
 
@@ -146,7 +136,7 @@ npm run build
 * The built output will materialize inside an isolated, production-grade dist/ workspace folder.
 
 
-Step 7: Local Production Simulation (Preview Mode)
+Step 6: Local Production Simulation (Preview Mode)
 Instantiate a local preview server wrapping the newly compiled distribution build to confirm edge-delivery simulation before firing pipeline webhooks:
 ```
 
@@ -154,40 +144,108 @@ npm run preview
 
 ```
 🌐 GitOps Pipeline & Continuous Deployment Strategy
-
-This architecture completely abandons manual provisioning or arbitrary zip file transfers in favor of an automated, webhook-driven Continuous Deployment (CD) engine integrated with global cloud edge servers via Vercel.
-```
-The Automated Build-to-Deploy Pipeline Lifecycle:
-
-
- [ Developer Workspace ] --( Git Push )--> [ GitHub Repository ] --( Webhook Trigger )--> [ Vercel Cloud Build Agent ] --> [ Global Edge Networks ]
-
-```
-1. Local Integrity Loop: Code modifications are iteratively tested inside the local dev cluster. Running npm run lint guarantees strict quality and system syntax consistency before any code pushes.
-
-2. Mainline Git Upstream Push: Verified incremental adjustments are pushed directly to the remote GitHub version tracking branch:
+This architecture completely abandons manual provisioning or arbitrary zip file transfers in favor of an automated, webhook-driven Continuous Deployment (CD) engine integrated with global cloud edge servers via Vercel and GitHub Actions.
 ```
 
+[ Code Commit ] ──> [ Git Push (main) ] ──> [ GitHub Actions Runner ] ──> [ Installs Vercel CLI ] ──> [ Production Deployment Live ]
+
+```
+Secret Key Management Configuration:
+To connect GitHub secure runners with your hosted Vercel infrastructure safely without hardcoding any credentials, the connection was bridged via encrypted repository tokens:
+
+Generated a secure Personal Access Token on the Vercel Dashboard named ```faraz-portfolio-project-token.```
+
+Created an encrypted secret within the GitHub Repository Settings named exactly``` VERCEL_TOKEN ```and assigned the generated token value to it.
+
+Pipeline Execution Definition (deploy.yml):
+Whenever code is pushed directly to the main branch, the automated runner fires up an ubuntu-latest node virtual machine instance and securely processes these declarative stages:
+
+```
+name: DevOps CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel --prod --yes --token $VERCEL_TOKEN
+
+```
+How to Trigger and Push Updates:
+To run the pipeline and update the live site instantly from your terminal environment, execute the following native version control sequences:
+
+```
+
+git init
 git add .
-git commit -m "refactor: optimize core component maps and responsive viewports"
-git push origin main
+git commit -m "feat: integrate enterprise github actions cicd workflow with vercel cli"
+git branch -M main
+git remote add origin [https://github.com/farazii1159/faraz-devops-portfolio.git](https://github.com/farazii1159/faraz-devops-portfolio.git)
+git push -u origin main
 
+---
 ```
-3. Automated Webhook Intercept: The instant a commit reaches the tracking engine, GitHub fires a secure webhook event to Vercel's orchestration infrastructure.
+## 🛠️ Automated Post-Push Execution Lifecycle (Behind the Scenes)
 
-4. Cloud Agent Build Execution: Vercel automatically provisions a containerized cloud runtime agent, pulls the updated mainline commit, targets the node environment dependencies, and executes the production compiler script:
+Once the terminal execution command `git push origin main` completes successfully, the architecture transitions away from manual oversight. The underlying infrastructure automatically orchestrates the live build and delivery process through four distinct runtime phases:
+
+### 1. Webhook Intercept & Workflow Initialization
+GitHub's tracking subsystem immediately detects the fresh delta push targeting the `main` operational branch. It matches the push signature against the repository's configuration framework and triggers the `.github/workflows/deploy.yml` operational blueprint. GitHub automatically provisions an isolated cloud computing runner instance (`ubuntu-latest`) to execute the pipeline lifecycle steps safely in an ephemeral container.
+
+### 2. Live Job Execution Lifecycle
+The running automated agent checks out the fresh mainline source files into its storage context, provisions a clean Node.js runtime cluster (pinned strictly to Version 22), and automatically processes the application's underlying ecosystem configurations via native system scripts:
+* **Dependency Fetching:** Executes `npm install` to map the necessary package module trees inside the virtual instance.
+* **Production Build Compilation:** Automatically fires `npm run build` to tree-shake, bundle, compress, and dump minified static assets inside a newly generated distribution target folder (`dist/`).
+
+### 3. Vercel CLI Secure Token Authentication
+The pipeline utilizes the encrypted repository credentials secret mapped inside your GitHub dashboard under **`VERCEL_TOKEN`**. The cloud workflow runtime agent securely calls this environment variable variable during execution, authenticating directly with the Vercel hosting system API gates without passing raw text string patterns, hardcoded parameters, or triggering interactive credential prompt hurdles.
+
+### 4. Global Cloud Edge Production Rollout
+The pipeline agent installs the universal Vercel CLI module tool globally inside the runtime execution stream and runs the absolute production flag sequence:
+bash
+vercel --prod --yes --token $VERCEL_TOKEN
+
+The raw compiled distribution assets (dist/) are synchronized with Vercel's hosting cluster, bypassing old manual interface dashboards entirely. The cloud framework propagates the updated production layout over its highly available Global Edge Network (CDN), updating the live URL context instantly under 2 minutes with zero downtime.
+
+🔍 Verifying Pipeline Logs & Deployment Health
+
+To audit the real-time execution steps, catch potential compile defects, or confirm the structural integrity of your active deployment infrastructure:
+
+1. GitHub Actions Matrix Monitoring: Access the Actions tab inside your remote GitHub repository dashboard interface to track step-by-step progress bars and trace command-line stdout outputs. A definitive green checkmark ($\checkmark$) marks a flawless workflow execution.
+  
+3. Integrated Deployment Tracker: Monitor the Deployments panel pinned directly to the right sidebar panel of the repository landing interface. This element actively signals tracking variables, mapping current states directly to live, stable releases on the edge.
 ```
-
-npm run build
-
 ```
-5. Global Edge Routing Propagation: Upon build completion, Vercel maps the static production output files (dist/) directly across its highly available global CDN edge network, instantly serving live performance updates globally with zero human manual overhead.
-
 🤝 Professional Inquiries & Collaboration
 ```
 If you are looking for an engineer equipped to manage codebase velocity while maintaining stable, highly-automated deployment pipelines, let's connect:
 ```
-* Live Portfolio Showcase: https://www.google.com/url?sa=E&source=gmail&q=https://faraz-devops-portfolio-rknq.vercel.app
+* Live Portfolio Showcase: https://faraz-devops-portfolio-wqsc.vercel.app/
 
 * LinkedIn Professional Network: https://www.linkedin.com/in/faraz-shabbir-5a9227344/
 
