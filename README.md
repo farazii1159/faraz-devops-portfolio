@@ -144,6 +144,7 @@ npm run preview
 
 ```
 🌐 GitOps Pipeline & Continuous Deployment Strategy
+
 This architecture completely abandons manual provisioning or arbitrary zip file transfers in favor of an automated, webhook-driven Continuous Deployment (CD) engine integrated with global cloud edge servers via Vercel and GitHub Actions.
 ```
 
@@ -151,6 +152,7 @@ This architecture completely abandons manual provisioning or arbitrary zip file 
 
 ```
 Secret Key Management Configuration:
+
 To connect GitHub secure runners with your hosted Vercel infrastructure safely without hardcoding any credentials, the connection was bridged via encrypted repository tokens:
 
 Generated a secure Personal Access Token on the Vercel Dashboard named ```faraz-portfolio-project-token.```
@@ -197,6 +199,7 @@ jobs:
 
 ```
 How to Trigger and Push Updates:
+
 To run the pipeline and update the live site instantly from your terminal environment, execute the following native version control sequences:
 
 ```
@@ -215,22 +218,27 @@ git push -u origin main
 Once the terminal execution command `git push origin main` completes successfully, the architecture transitions away from manual oversight. The underlying infrastructure automatically orchestrates the live build and delivery process through four distinct runtime phases:
 
 ### 1. Webhook Intercept & Workflow Initialization
+
 GitHub's tracking subsystem immediately detects the fresh delta push targeting the `main` operational branch. It matches the push signature against the repository's configuration framework and triggers the `.github/workflows/deploy.yml` operational blueprint. GitHub automatically provisions an isolated cloud computing runner instance (`ubuntu-latest`) to execute the pipeline lifecycle steps safely in an ephemeral container.
 
 ### 2. Live Job Execution Lifecycle
+
 The running automated agent checks out the fresh mainline source files into its storage context, provisions a clean Node.js runtime cluster (pinned strictly to Version 22), and automatically processes the application's underlying ecosystem configurations via native system scripts:
 * **Dependency Fetching:** Executes `npm install` to map the necessary package module trees inside the virtual instance.
 * **Production Build Compilation:** Automatically fires `npm run build` to tree-shake, bundle, compress, and dump minified static assets inside a newly generated distribution target folder (`dist/`).
 
 ### 3. Vercel CLI Secure Token Authentication
+
 The pipeline utilizes the encrypted repository credentials secret mapped inside your GitHub dashboard under **`VERCEL_TOKEN`**. The cloud workflow runtime agent securely calls this environment variable variable during execution, authenticating directly with the Vercel hosting system API gates without passing raw text string patterns, hardcoded parameters, or triggering interactive credential prompt hurdles.
 
 ### 4. Global Cloud Edge Production Rollout
+
 The pipeline agent installs the universal Vercel CLI module tool globally inside the runtime execution stream and runs the absolute production flag sequence:
 bash
 vercel --prod --yes --token $VERCEL_TOKEN
 
 The raw compiled distribution assets (dist/) are synchronized with Vercel's hosting cluster, bypassing old manual interface dashboards entirely. The cloud framework propagates the updated production layout over its highly available Global Edge Network (CDN), updating the live URL context instantly under 2 minutes with zero downtime.
+
 
 🔍 Verifying Pipeline Logs & Deployment Health
 
