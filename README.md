@@ -25,7 +25,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 Welcome to the comprehensive engineering repository of my professional DevOps Portfolio website. This platform is strategically engineered to demonstrate production-ready frontend practices, modern build bundlers, interactive component pipelines, automated vector rendering, live API matrix interfaces, and seamless GitOps-driven cloud deployment workflows.
 
-🔗 **Live Production URL:** [faraz-devops-portfolio-rknq.vercel.app](https://faraz-devops-portfolio-rknq.vercel.app)
+🔗 **Live Production URL:** [faraz-devops-portfolio][[https://faraz-devops-portfolio-wqsc.vercel.app]
 
 ---
 
@@ -88,7 +88,7 @@ faraz-portfolio-cicd/
 ├── package.json            # Node project dependency manifests & lifecycle target scripts
 └── vite.config.js          # Unified bundler configuration integrating React and Tailwind compilers
 ```
-###############################################################################################################
+#########################################################################################################
 
 💻 Step-by-Step Local Deployment Runbook
 Follow this precise execution runbook to spin up, configure, analyze, and build this architecture within your local workspace environment:
@@ -173,6 +173,7 @@ Production Infrastructure Blueprint (Dockerfile):
 
 ```
 # ---------- STAGE 1: BUILD INFRASTRUCTURE ----------
+
 FROM node:20 AS builder
 
 # Set the operational workspace context
@@ -203,19 +204,23 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
 ```
+
 1. Container Runbook Instructions:
 Build the Container Image: Compile your configuration layers into a tagged local Docker image matrix:
 ```
 docker build -t faraz-portfolio .
 
 ```
+
 2. Launch the Container Cluster: Spin up the containerized application by mapping your host machine's port 8080 to the internal Nginx serving port 80:
 ```
 
 docker run -d -p 8080:80 -- faraz-portfolio
 
 ```
+
 3. Live Local Access: Open your web browser layout and navigate to: http://localhost:8080
+
 
 4. Monitor Active Contexts: Audit running execution spaces to confirm engine performance indicators:
 
@@ -224,12 +229,14 @@ docker run -d -p 8080:80 -- faraz-portfolio
 docker ps
 
 ```
+
 5. Halt and Clean Runtime Environments:** Turn off the container process using its designated assignment name:
    ```
    docker stop portfolio-container
 
 ```
 
+```
 🌐 GitOps Pipeline & Continuous Deployment Strategy
 
 This architecture completely abandons manual provisioning or arbitrary zip file transfers in favor of an automated, webhook-driven Continuous Deployment (CD) engine integrated with global cloud edge servers via Vercel and GitHub Actions.
@@ -291,6 +298,7 @@ jobs:
   
 ```
 ```
+
 ```
 ## 🛠️ Automated Post-Push Execution Lifecycle (Behind the Scenes)
 
@@ -300,15 +308,18 @@ Once the terminal execution command `git push origin main` completes successfull
 
 GitHub's tracking subsystem immediately detects the fresh delta push targeting the `main` operational branch. It matches the push signature against the repository's configuration framework and triggers the `.github/workflows/deploy.yml` operational blueprint. GitHub automatically provisions an isolated cloud computing runner instance (`ubuntu-latest`) to execute the pipeline lifecycle steps safely in an ephemeral container.
 
+
 ### 2. Live Job Execution Lifecycle
 
 The running automated agent checks out the fresh mainline source files into its storage context, provisions a clean Node.js runtime cluster (pinned strictly to Version 22), and automatically processes the application's underlying ecosystem configurations via native system scripts:
 * **Dependency Fetching:** Executes `npm install` to map the necessary package module trees inside the virtual instance.
 * **Production Build Compilation:** Automatically fires `npm run build` to tree-shake, bundle, compress, and dump minified static assets inside a newly generated distribution target folder (`dist/`).
 
+
 ### 3. Vercel CLI Secure Token Authentication
 
 The pipeline utilizes the encrypted repository credentials secret mapped inside your GitHub dashboard under **`VERCEL_TOKEN`**. The cloud workflow runtime agent securely calls this environment variable variable during execution, authenticating directly with the Vercel hosting system API gates without passing raw text string patterns, hardcoded parameters, or triggering interactive credential prompt hurdles.
+
 
 ### 4. Global Cloud Edge Production Rollout
 
@@ -316,6 +327,7 @@ The pipeline agent installs the universal Vercel CLI module tool globally inside
 ```
 vercel --prod --yes --token $VERCEL_TOKEN
 ```
+
 The raw compiled distribution assets (dist/) are synchronized with Vercel's hosting cluster, bypassing old manual interface dashboards entirely. The cloud framework propagates the updated production layout over its highly available Global Edge Network (CDN), updating the live URL context instantly under 2 minutes with zero downtime.
 
 
@@ -329,7 +341,7 @@ To audit the real-time execution steps, catch potential compile defects, or conf
 ```
 ```
 🤝 Professional Inquiries & Collaboration
-```
+
 If you are looking for an engineer equipped to manage codebase velocity while maintaining stable, highly-automated deployment pipelines, let's connect:
 ``
 * Live Portfolio Showcase: https://faraz-devops-portfolio-wqsc.vercel.app/
