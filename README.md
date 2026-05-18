@@ -346,7 +346,7 @@ If you are looking for an engineer equipped to manage codebase velocity while ma
 ``
 * Live Portfolio Showcase: https://faraz-devops-portfolio-wqsc.vercel.app/
 
-* LinkedIn Professional Network: https://www.linkedin.com/in/faraz-shabbir-5a9227344/
+* LinkedIn Professional Network: https://www.linkedin.com/in/faraz-shabbir-5a9227344
 
 * GitHub Code Repositories: https://github.com/farazii1159
 

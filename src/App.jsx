@@ -32,9 +32,10 @@ const SKILLS_DATA = [
 
 const PROJECTS_DATA = [
   {
-    title: 'Enterprise CI/CD Pipeline',
-    desc: 'Built CI/CD workflow using GitHub Actions, Docker, AWS with rollback strategy.',
-    tech: 'GitHub Actions • Docker • AWS • Linux'
+    title: 'Dockerized Web Server Deployment', // <--- Task 4 title
+    desc: 'Containerized and deployed a high-performance web server inside Docker. Managed full container lifecycle, health monitoring, and resource troubleshooting.',
+    tech: 'Docker • Nginx/Apache • Linux • Containerization', // <--- Task 4 skills
+    link: 'https://github.com/farazii1159/CODEALPHA_Devops_TASK_4.git'
   },
   {
     title: 'Dockerized Infrastructure',
@@ -85,7 +86,7 @@ export default function FarazDevOpsPortfolio() {
                  className="bg-cyan-500 hover:bg-cyan-400 transition px-6 py-3 rounded-2xl text-black font-bold shadow-lg shadow-cyan-500/20">
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/faraz-shabbir-5a9227344/" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.linkedin.com/in/faraz-shabbir-5a9227344" target="_blank" rel="noopener noreferrer"
                  className="border border-gray-700 hover:border-cyan-400 transition px-6 py-3 rounded-2xl">
                 LinkedIn
               </a>
