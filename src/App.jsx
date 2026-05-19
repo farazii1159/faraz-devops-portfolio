@@ -182,17 +182,28 @@ Connection established...`}
         </div>
       </section>
 
-      {/* PROJECTS SECTION */}
+     {/* PROJECTS SECTION (UPDATED TO BE CLICKABLE) */}
       <section className="bg-gray-950/50 border-y border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-20">
           <h2 className="text-4xl font-bold mb-12">Featured Projects</h2>
           <div className="grid lg:grid-cols-2 gap-8">
             {PROJECTS_DATA.map((project, index) => (
-              <div key={index} className="bg-gray-900 border border-gray-800 rounded-3xl p-8 hover:border-cyan-500 transition-all group">
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition">{project.title}</h3>
+              <a 
+                key={index} 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block bg-gray-900 border border-gray-800 rounded-3xl p-8 hover:border-cyan-500 transition-all group cursor-pointer"
+              >
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition flex justify-between items-center">
+                  {project.title}
+                  <span className="text-sm font-normal text-gray-500 group-hover:text-cyan-400 transition">
+                    View Code ↗
+                  </span>
+                </h3>
                 <p className="text-gray-400 leading-relaxed mb-6">{project.desc}</p>
                 <div className="border-t border-gray-800 pt-4 text-cyan-400/80 text-sm font-mono">{project.tech}</div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
