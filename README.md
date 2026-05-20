@@ -344,7 +344,7 @@ To audit the real-time execution steps, catch potential compile defects, or conf
 
 If you are looking for an engineer equipped to manage codebase velocity while maintaining stable, highly-automated deployment pipelines, let's connect:
 ``
-* Live Portfolio Showcase: https://faraz-devops-portfolio-wqsc.vercel.app/
+* Live Portfolio Showcase: https://faraz-devops-portfolio.vercel.app/
 
 * LinkedIn Professional Network: https://www.linkedin.com/in/faraz-shabbir-5a9227344
 
