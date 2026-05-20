@@ -38,9 +38,10 @@ const PROJECTS_DATA = [
     link: 'https://github.com/farazii1159/CODEALPHA_Devops_TASK_4.git'
   },
   {
-    title: 'Dockerized Infrastructure',
-    desc: 'Multi-service containerized apps with Nginx reverse proxy automation.',
-    tech: 'Docker • Nginx • Bash'
+    title: 'Proton_Agency Deployment',
+    desc: 'Automated CI/CD pipeline and containerized deployment for a modern Next.js web application, featuring custom workflow automation and performance optimization.',
+    tech: 'Next.js • GitHub Actions • Vercel • Docker',
+    link: 'https://github.com/farazii1159/ProtonAgency_Deploy.git'
   }
 ];
 
