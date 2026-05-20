@@ -44,7 +44,7 @@ const PROJECTS_DATA = [
     link: 'https://github.com/farazii1159/ProtonAgency_Deploy.git'
   }
 ];
-
+ 
 export default function FarazDevOpsPortfolio() {
   
   // NOTE: Humne purana 'handleDownloadResume' yahan se hata diya hai
