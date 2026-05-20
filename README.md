@@ -21,7 +21,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 --------------------------------------------------------------------------------------------------------------------------
 
-# 🚀 Production-Grade DevOps Portfolio Architecture
+### 🚀 Production-Grade DevOps Portfolio Architecture
 
 Welcome to the comprehensive engineering repository of my professional DevOps Portfolio website. This platform is strategically engineered to demonstrate production-ready frontend practices, modern build bundlers, interactive component pipelines, automated vector rendering, live API matrix interfaces, and seamless GitOps-driven cloud deployment workflows.
 
@@ -29,7 +29,7 @@ Welcome to the comprehensive engineering repository of my professional DevOps Po
 
 ---
 
-## 🛠️ Architecture & Tech Stack Core
+### 🛠️ Architecture & Tech Stack Core
 
 ### 1. High-Performance Build Engine
 * **Framework:** React 19 (Functional component primitives utilizing hooks for optimized state tree synchronization).
@@ -90,7 +90,7 @@ faraz-portfolio-cicd/
 ```
 #########################################################################################################
 
-💻 Step-by-Step Local Deployment Runbook
+### 💻 Step-by-Step Local Deployment Runbook
 Follow this precise execution runbook to spin up, configure, analyze, and build this architecture within your local workspace environment:
 
 Prerequisites
@@ -161,7 +161,7 @@ Instantiate a local preview server wrapping the newly compiled distribution buil
 npm run preview
 
 ```
-🐳 Production-Grade Multi-Stage Containerization (Docker & Nginx)
+### 🐳 Production-Grade Multi-Stage Containerization (Docker & Nginx)
 To move away from ephemeral local development environments and mirror actual cloud ecosystem behaviors, this project includes a Multi-Stage Dockerfile. This process isolates the workspace execution model and serves the application via a high-performance reverse proxy configuration (Nginx).
 
 Why Multi-Stage Builds Matter:
@@ -169,7 +169,7 @@ Stage 1 (Builder): Pulls a full Node.js image to install packages and compile op
 
 Stage 2 (Production): Discards the entire bulky Node runtime completely, copying only the compressed compilation output (dist/) into a lightweight, bare-metal Nginx Alpine container. This shields source files from external exposures and reduces the final deployment print size dramatically.
 
-Production Infrastructure Blueprint (Dockerfile):
+### Production Infrastructure Blueprint (Dockerfile):
 
 ```
 # ---------- STAGE 1: BUILD INFRASTRUCTURE ----------
@@ -236,8 +236,8 @@ docker ps
 
 ```
 
-```
-🌐 GitOps Pipeline & Continuous Deployment Strategy
+```  
+### 🌐 GitOps Pipeline & Continuous Deployment Strategy
 
 This architecture completely abandons manual provisioning or arbitrary zip file transfers in favor of an automated, webhook-driven Continuous Deployment (CD) engine integrated with global cloud edge servers via Vercel and GitHub Actions.
 ```
@@ -245,7 +245,7 @@ This architecture completely abandons manual provisioning or arbitrary zip file 
 [ Code Commit ] ──> [ Git Push (main) ] ──> [ GitHub Actions Runner ] ──> [ Installs Vercel CLI ] ──> [ Production Deployment Live ]
 
 ```
-Secret Key Management Configuration:
+### Secret Key Management Configuration:
 
 To connect GitHub secure runners with your hosted Vercel infrastructure safely without hardcoding any credentials, the connection was bridged via encrypted repository tokens:
 
